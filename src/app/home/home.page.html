@@ -3,18 +3,19 @@
     <ion-title>
       Blank
     </ion-title>
+    <ion-button slot="end" color="success" (click)="continue()">Continuar</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-button expand="full" (click)="takePhotoCamera()">Tomar una foto</ion-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button expand="full" (click)="selectPhotoCamera()">Seleccionar foto de galeria</ion-button>
+
+  <ion-button expand="full" (click)="selectPhotoPicker()">Seleccionar foto con picker</ion-button>
+
+  <ion-item *ngFor="let photo of photos; index as i">
+    <ion-img *ngIf="!text[i]" src="{{photo}}" (click)="showText(i)"></ion-img>
+    <ion-label *ngIf="text[i]" (click)="showText(i)">{{photo}}</ion-label>
+  </ion-item>
 </ion-content>

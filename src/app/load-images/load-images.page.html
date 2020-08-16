@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Load Images</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img *ngIf="index >= 0" src="{{photos[index]}}" class="img-medium-size"></ion-img>
+  <ion-img *ngIf="0 > index" src="https://i.pinimg.com/originals/f4/9d/0b/f49d0bc00e44cb196068b635e530f340.jpg" class="img-medium-size"></ion-img>
+  <ion-slides [options]="slideOptsThree" #slideWithNav>
+    <ion-slide *ngFor="let image of photos; let i=index" (click)="slideSelected(i)">
+      <ion-img src="{{image}}"></ion-img>
+    </ion-slide>
+  </ion-slides>
+  <br>
+  <ion-slides>
+    <ion-slide>
+      <ion-button *ngIf="index >= 0" color="danger" (click)="removeSlides()"><ion-icon name="trash"></ion-icon> Quitar</ion-button>
+      <ion-button color="success" (click)="continue()">Confirmar</ion-button>
+    </ion-slide>
+  </ion-slides>
+  
+  <div class="ion-text-center">
+    <ion-text (click)="loadMorePhotos()" color="success"><h2>Cargar mas fotos</h2></ion-text>
+  </div>
+</ion-content>
